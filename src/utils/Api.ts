@@ -5,7 +5,7 @@ class Api {
   }
 
   login(username: string, password: string) {
-    return this._makeRequest(this._baseUrl, {
+    return this._makeRequest(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
