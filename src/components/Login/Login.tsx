@@ -1,7 +1,7 @@
 import "./Login.css";
 import { useState, FormEvent, ChangeEvent } from "react";
 
-interface ValuesType {
+export interface ValuesType {
   username: string;
   password: string;
 }
@@ -38,6 +38,7 @@ export function Login({ onSubmit }: LoginProps) {
         type="password"
         value={values.password}
       />
+      <span className="login__message"></span>
       <button className="login__submit">Войти</button>
     </form>
   );

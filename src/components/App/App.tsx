@@ -1,8 +1,15 @@
 import "./App.css";
-import { Login } from "../Login/Login";
+import { Login, ValuesType } from "../Login/Login";
+import { api } from "../../utils/Api";
 
 function App() {
-  function handleLogin() {}
+  function handleLogin({ username, password }: ValuesType) {
+    //    console.log(username, password);
+    api
+      .login(username, password)
+      .then((json) => console.log(json))
+      .catch((error) => console.log(error));
+  }
 
   return (
     <div className="app">
