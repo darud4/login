@@ -1,17 +1,30 @@
 import "./Login.css";
-import { useState, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 
-function Login() {
+interface ValuesType {
+  username: string;
+  password: string;
+}
+
+interface LoginProps {
+  onSubmit: (o: ValuesType) => void;
+}
+
+export function Login({ onSubmit }: LoginProps) {
   const [values, setValues] = useState({ username: "", password: "" });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget;
-//    console.log(name, value);
     setValues({ ...values, [name]: value });
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    onSubmit(values);
+  }
+
   return (
-    <form className="login" name="login" noValidate>
+    <form className="login" name="login" onSubmit={handleSubmit} noValidate>
       <input
         onChange={handleChange}
         className="login__input input-username"
@@ -25,8 +38,7 @@ function Login() {
         type="password"
         value={values.password}
       />
+      <button className="login__submit">Войти</button>
     </form>
   );
 }
-
-export default Login;
