@@ -11,12 +11,7 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-  return (
-    <div className="app">
-      Test
-      <Login onSubmit={handleLogin} />
-    </div>
-  );
+  return <div className="app">{false && <Login onSubmit={handleLogin} />}</div>;
 }
 
 export default App;
